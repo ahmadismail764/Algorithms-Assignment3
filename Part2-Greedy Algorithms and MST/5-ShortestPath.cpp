@@ -17,22 +17,27 @@ int main()
         int a, b, c;
         cin >> a >> b >> c;
         a--;
-        b--; // Adjusting for 0-based indexing
+        b--;
         int weight = pow(2, c);
         dist[a][b] = weight;
         dist[b][a] = weight;
     }
 
-    // Floyd-Warshall algorithm
     for (int k = 0; k < n; ++k)
     {
+        // k is the intermediate vertex we are considering
         for (int i = 0; i < n; ++i)
         {
+            // i is the starting vertex
             for (int j = 0; j < n; ++j)
             {
+                // j is the ending vertex
                 if (dist[i][k] != INF && dist[k][j] != INF)
                 {
+                    // If there is a path from i to k and from k to j
                     dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+                    // Update the shortest path from i to j to be the minimum of the current value
+                    // and the path that goes through k
                 }
             }
         }
