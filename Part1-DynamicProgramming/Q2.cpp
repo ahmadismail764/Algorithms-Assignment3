@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int MOD = 1e9 + 7;
 vector<int> dp;
 string s;
 
@@ -20,11 +19,11 @@ string s;
         result = solve(currentIndex - 1);
 
         if ( s[currentIndex] == 'n' && s[currentIndex-1] == 'n') {
-            result = (result + solve(currentIndex - 2)) % MOD;
+            result = (result + solve(currentIndex - 2));
         }
 
         if (s[currentIndex] == 'u' && s[currentIndex-1] == 'u') {
-            result = (result + solve(currentIndex - 2)) % MOD;
+            result = (result + solve(currentIndex - 2)) ;
         }
 
         dp[currentIndex] = result;
